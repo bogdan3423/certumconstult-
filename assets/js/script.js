@@ -77,7 +77,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.preventDefault();
                 renderErrors(errorContainer, errors);
             } else {
-                renderSuccess(errorContainer, "Îți mulțumim. Specialiștii noștri te vor contacta în scurt timp.");
+                event.preventDefault();
+                fetch("https://formsubmit.co/ajax/rusbogdan3423@gmail.com", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: nameField.value,
+                        email: emailField.value,
+                        message: messageField.value
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            renderSuccess(errorContainer, "Îți mulțumim. Specialiștii noștri te vor contacta în scurt timp.");
+                        } else {
+                            renderErrors(errorContainer, data.errors);
+                        }
+                    })
+                    .catch(error => console.log(error));
+            
             }
         });
     }
