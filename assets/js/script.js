@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 renderErrors(errorContainer, errors);
             } else {
                 event.preventDefault();
-                fetch("https://formsubmit.co/ajax/rusbogdan3423@gmail.com", {
+                fetch("https://formsubmit.co/ajax/contact@certumconsult.ro", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
